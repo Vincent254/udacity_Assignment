@@ -1,0 +1,201 @@
+data:
+  FUNCTIONS_WORKER_RUNTIME: cHl0aG9u
+  FUNCTIONS_EXTENSION_VERSION: fjM=
+  AzureWebJobsStorage: RGVmYXVsdEVuZHBvaW50c1Byb3RvY29sPWh0dHBzO0FjY291bnROYW1lPXNpbmlhc3RvcmFnZWFjY291bnQ7QWNjb3VudEtleT1PQ2NpYUgzRmdmTlBTZ3Rnc3hlME1lN0xCZHhOTWFaSlNYWkhPU05vSVNuVnMybjNCMGJhdFdwRUZBZC9nR0lQUm44eWg3V0R3NXVGZzBnQXYzck81dz09O0VuZHBvaW50U3VmZml4PWNvcmUud2luZG93cy5uZXQ=
+  APPINSIGHTS_INSTRUMENTATIONKEY: YmE5ZTZjMTMtMGVlNi00NGU5LWE3NWUtYWIxNmQ2ZTdhNzQw
+  DBConnectionMongo: bW9uZ29kYjovL21hY2hvY29zbW9zZGI6RDRQTHlhbk15elZOdnR4aHRpMDRJR0YxZkc1bDllOWhHbFdRUUhMRmJXNkEydUtkU1Yxc3lPaW93cW51TGdvOTJEaXdzN3REMFFtTVcwUTZ1N1VxUUE9PUBtYWNob2Nvc21vc2RiLm1vbmdvLmNvc21vcy5henVyZS5jb206MTAyNTUvP3NzbD10cnVlJnJlcGxpY2FTZXQ9Z2xvYmFsZGImcmV0cnl3cml0ZXM9ZmFsc2UmbWF4SWRsZVRpbWVNUz0xMjAwMDAmYXBwTmFtZT1AbWFjaG9jb3Ntb3NkYkA=
+  APPLICATIONINSIGHTS_CONNECTION_STRING: SW5zdHJ1bWVudGF0aW9uS2V5PWJhOWU2YzEzLTBlZTYtNDRlOS1hNzVlLWFiMTZkNmU3YTc0MDtJbmdlc3Rpb25FbmRwb2ludD1odHRwczovL3dlc3R1cy0wLmluLmFwcGxpY2F0aW9uaW5zaWdodHMuYXp1cmUuY29tLw==
+  connection: RW5kcG9pbnQ9c2I6Ly9ldmVudGh1Ym5hbWVzcGFjZXVkYWFzc2lnbi5zZXJ2aWNlYnVzLndpbmRvd3MubmV0LztTaGFyZWRBY2Nlc3NLZXlOYW1lPVJvb3RNYW5hZ2VTaGFyZWRBY2Nlc3NLZXk7U2hhcmVkQWNjZXNzS2V5PVN6R241RVdhUzJwQVRMQnNkc20xQUI1cTAyYm10SlhrclkvVjE5VjZSMW89
+apiVersion: v1
+kind: Secret
+metadata:
+  name: machoaks
+---
+data:
+  host.master: QTNIYlJvUHJ5ZmtFWjBxL1loU2hlMDg4dHZIcGZpT1JYSVZWdmRiQnRKZEhmSHl1WThDQXlRPT0=
+  host.function.default: R1E3cE95M0tJUnVjaEJzSVEzNUJ4b0NFanp4SlM0eG9Oa2FvRDhDTTlaS2ZIQ2JJVGFrcnZ3PT0=
+  host.systemKey.default: SGVQc1JBYldYckwxU2E2S3dRUTRlN09jdW9GUmtQMlNEOUNTcWFnQklDTTIzQTRzMkgzNkx3PT0=
+  functions.createadvertisement.default: UWJLa21hSjk2dW9weXkzYUYybTRNWnZlRW1Yb0xDQ0g0dlQxV1FZZGNaVXJsZ0Q1RXNhQlVnPT0=
+  functions.deleteadvertisement.default: bkZSY2dyRmhHUVBwYTZ2SUFhTy9kYUc2MkdsZnJnRWFWUm1aQmJvM0s0cEVidjVBRkVyaE1RPT0=
+  functions.getadvertisement.default: bGQ1UWZHSnhyS09vczE4SFpTRzZiRDBSbGFOODlBOXVacUNEa3dTL21Yb3VGRXhoRDBnaHBBPT0=
+  functions.getadvertisements.default: ZnYwakJOTXZWYWd3QWg4eVVqME5xLy9lbTJnSVdhWlZReXQ0eVJ5TVBTdXNVem1NUjIwR1RnPT0=
+  functions.getpost.default: aGZEVjhpVDFtdHg4YnhnSWRBU3BBUEpkVkY2N2FJc2lxTk5FMVQvMEtFOUlMYjI2MmRTUXJnPT0=
+  functions.getposts.default: S3R0UHIvMXhhNklCM2psa29kYjN2WDlaOUQ0Rkg2TWZCUmM0bHdFd29jRGpaajFRRWE2c3B3PT0=
+  functions.updateadvertisement.default: a0loanFPcDl6dVM2TFRIckVwVklqY3YvSmF3ZmZEbzd2bE1tNm5pTEpSQTcvOWtDWC9wYk1BPT0=
+apiVersion: v1
+kind: Secret
+metadata:
+  name: func-keys-kube-secret-machoaks
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: machoaks-function-keys-identity-svc-act
+---
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - secrets
+  - configMaps
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: functions-keys-manager-role
+---
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: functions-keys-manager-role
+subjects:
+- kind: ServiceAccount
+  name: machoaks-function-keys-identity-svc-act
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: machoaks-function-keys-identity-svc-act-functions-keys-manager-rolebinding
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: machoaks-http
+spec:
+  selector:
+    app: machoaks-http
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: machoaks-http
+  labels:
+    app: machoaks-http
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: machoaks-http
+  template:
+    metadata:
+      labels:
+        app: machoaks-http
+    spec:
+      containers:
+      - name: machoaks-http
+        image: machocontainerregistry.azurecr.io/neighbourlyapi:v1.0.0
+        ports:
+        - containerPort: 80
+        env:
+        - name: AzureFunctionsJobHost__functions__0
+          value: createAdvertisement
+        - name: AzureFunctionsJobHost__functions__1
+          value: deleteAdvertisement
+        - name: AzureFunctionsJobHost__functions__2
+          value: getAdvertisement
+        - name: AzureFunctionsJobHost__functions__3
+          value: getAdvertisements
+        - name: AzureFunctionsJobHost__functions__4
+          value: getPost
+        - name: AzureFunctionsJobHost__functions__5
+          value: getPosts
+        - name: AzureFunctionsJobHost__functions__6
+          value: updateAdvertisement
+        - name: AzureWebJobsSecretStorageType
+          value: kubernetes
+        - name: AzureWebJobsKubernetesSecretName
+          value: secrets/func-keys-kube-secret-machoaks
+        envFrom:
+        - secretRef:
+            name: machoaks
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 240
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+        startupProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 240
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+      serviceAccountName: machoaks-function-keys-identity-svc-act
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: machoaks
+  labels:
+    app: machoaks
+spec:
+  selector:
+    matchLabels:
+      app: machoaks
+  template:
+    metadata:
+      labels:
+        app: machoaks
+    spec:
+      containers:
+      - name: machoaks
+        image: machocontainerregistry.azurecr.io/neighbourlyapi:v1.0.0
+        env:
+        - name: AzureFunctionsJobHost__functions__0
+          value: eventHubTrigger
+        envFrom:
+        - secretRef:
+            name: machoaks
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 240
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+        startupProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 240
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+      serviceAccountName: machoaks-function-keys-identity-svc-act
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: machoaks
+  labels: {}
+spec:
+  scaleTargetRef:
+    name: machoaks
+  triggers:
+  - type: eventgridtrigger
+    metadata:
+      direction: in
+      eventHubName: testhub
+      connection: Endpoint=sb://udacityneighborly.servicebus.windows.net/;SharedAccessKeyName=allpolicy;SharedAccessKey=LOxUOkN13xN038T1VoSsmaTt4s7vq/+VCzduS5/nH9A=;EntityPath=testhub
+---
+
